@@ -1,0 +1,155 @@
+/* Yleiset tyylit */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f4f9;
+  color: #333;
+  text-align: center;
+}
+
+header {
+  background: #3f51b5;
+  color: white;
+  padding: 1em;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.8em;
+}
+
+/* Intro + nappi */
+.intro {
+  margin: 2em 1em;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 1em;
+  padding: 0.8em 1.5em;
+  background: #3f51b5;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+}
+
+/* Karuselli */
+.carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: 350px; /* desktop-korkeus */
+}
+
+.slides {
+  display: flex;
+  width: calc(200%); /* kuvat kahdesti */
+  animation: scroll 40s linear infinite; /* hidas liike */
+}
+
+.slides img {
+  width: auto;
+  height: 350px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Läsy-sivu keskitys */
+.centered {
+  max-width: 500px;
+  margin: auto;
+  padding: 1em;
+}
+
+/* Accordion */
+.accordion {
+  background-color: #eee;
+  cursor: pointer;
+  padding: 1em;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.3s;
+  font-weight: bold;
+  margin: 0.5em 0;
+  border-radius: 8px;
+}
+
+.accordion.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.panel {
+  display: none;
+  padding: 1em;
+  background-color: white;
+  border-left: 3px solid #3f51b5;
+  border-radius: 0 0 8px 8px;
+  text-align: left;
+}
+
+/* Mobiiliystävällisyys */
+@media (max-width: 600px) {
+  h1 { font-size: 1.5em; }
+  .button { width: 90%; }
+  .centered { width: 90%; }
+
+  .carousel {
+    height: 200px; /* mobiilissa matalampi */
+  }
+  .slides img {
+    height: 200px;
+  }
+}
+
+.back-button {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  background: #eee;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+.back-button:hover {
+  background: #ccc;
+}
+
+.side-image {
+  position: fixed; /* Pitää kuvan paikallaan selaimen näkymässä */
+  top: 50%; /* Keskittää kuvan pystysuunnassa (aloituspiste) */
+  transform: translateY(-50%); /* Siirtää kuvaa puolet omasta korkeudestaan ylös, jotta se keskittyy täydellisesti */
+  max-width: 250px; /* Säädä kuvien maksimileveyttä tarpeen mukaan */
+  height: auto; /* Säilyttää kuvan kuvasuhteen */
+  z-index: -1; /* Vie kuvat tekstin alle, jotta ne eivät peitä sisältöä */
+  opacity: 0.7; /* Voit säätää läpinäkyvyyttä, jos haluat niiden olevan taustamaisempia */
+}
+
+.side-image.left {
+  left: 20px; /* Kuvan etäisyys vasemmasta reunasta */
+}
+
+.side-image.right {
+  right: 20px; /* Kuvan etäisyys oikeasta reunasta */
+}
+
+/* Voit lisätä media queryjä, jos haluat kuvien piiloutuvan tai muuttavan kokoaan pienemmillä näytöillä */
+@media (max-width: 1200px) {
+  .side-image {
+    max-width: 180px; /* Pienemmät kuvat pienemmillä näytöillä */
+  }
+}
+
+@media (max-width: 900px) {
+  .side-image {
+    display: none; /* Piilota kuvat kokonaan hyvin pienillä näytöillä */
+  }
+}
