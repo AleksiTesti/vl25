@@ -103,12 +103,16 @@ h1 {
   h1 { font-size: 1.3em; }
 
   .accordion{
-    font-size: 1.1em;
+    display: block;
+    width: 100%;
+    font-size: 1.2em;
     padding: 1.2em;
+    box-sizing: border-box;
   }
 
   .panel{
     font-size: 0.9em;
+    line-height: 1.4em;
     padding: 0.8em;
   }
 
