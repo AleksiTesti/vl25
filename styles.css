@@ -5,6 +5,7 @@ body {
   background: #f4f4f9;
   color: #333;
   text-align: center;
+  overflow-x: hidden; /* Estää sivuttaisskrollauksen */
 }
 
 header {
@@ -36,33 +37,33 @@ h1 {
 
 /* Karuselli */
 .carousel {
-  width: 100%;
+  width: 100vw; /* täysi näkymän leveys */
   overflow: hidden;
   position: relative;
-  height: 350px; /* desktop-korkeus */
+  height: 350px; /* desktop */
 }
 
 .slides {
   display: flex;
-  width: calc(200%); /* kuvat kahdesti */
-  animation: scroll 40s linear infinite; /* hidas liike */
+  animation: scroll 60s linear infinite; /* hidas ja saumaton */
+  width: max-content;
 }
 
 .slides img {
-  width: auto;
   height: 350px;
+  width: auto;
   flex-shrink: 0;
   object-fit: cover;
 }
 
 @keyframes scroll {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to { transform: translateX(-50%); } /* liike 50 % kuvista, jos tuplattu */
 }
 
 /* Läsy-sivu keskitys */
 .centered {
-  max-width: 500px;
+  max-width: 600px;
   margin: auto;
   padding: 1em;
 }
@@ -71,16 +72,16 @@ h1 {
 .accordion {
   background-color: #eee;
   cursor: pointer;
-  padding: 1em;
+  padding: 1.2em;
   width: 100%;
   text-align: left;
   border: none;
   outline: none;
   transition: 0.3s;
   font-weight: bold;
-  margin: 0.5em 0;
-  border-radius: 8px;
-  font-size: 1em;
+  margin: 0.7em 0;
+  border-radius: 10px;
+  font-size: 1.1em;
 }
 
 .accordion.active, .accordion:hover {
@@ -89,85 +90,65 @@ h1 {
 
 .panel {
   display: none;
-  padding: 1em;
+  padding: 1.2em;
   background-color: white;
-  border-left: 3px solid #3f51b5;
-  border-radius: 0 0 8px 8px;
+  border-left: 4px solid #3f51b5;
+  border-radius: 0 0 10px 10px;
   text-align: left;
-  font-size: 0.95em;
-  line-height: 1.4em;
+  font-size: 1em;
+  line-height: 1.5em;
 }
 
-/* Mobiiliystävällisyys */
-@media (max-width: 600px) {
-  h1 { font-size: 1.3em; }
-
-  .accordion{
-    display: block;
-    width: 100%;
-    font-size: 1.2em;
-    padding: 1.2em;
-    box-sizing: border-box;
-  }
-
-  .panel{
-    font-size: 0.9em;
-    line-height: 1.4em;
-    padding: 0.8em;
-  }
-
-  .button { width: 90%; font-size: 1em; }
-  .centered { width: 90%; }
-
-  .carousel {
-    height: 200px; /* mobiilissa matalampi */
-  }
-  .slides img {
-    height: 200px;
-  }
-}
-
+/* Takaisin-nappi */
 .back-button {
   display: inline-block;
   margin-bottom: 20px;
-  padding: 8px 16px;
+  padding: 10px 20px;
   background: #eee;
   color: #333;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 6px;
   font-weight: bold;
 }
 .back-button:hover {
   background: #ccc;
 }
 
-.side-image {
-  position: fixed; /* Pitää kuvan paikallaan selaimen näkymässä */
-  top: 50%; /* Keskittää kuvan pystysuunnassa (aloituspiste) */
-  transform: translateY(-50%); /* Siirtää kuvaa puolet omasta korkeudestaan ylös, jotta se keskittyy täydellisesti */
-  max-width: 250px; /* Säädä kuvien maksimileveyttä tarpeen mukaan */
-  height: auto; /* Säilyttää kuvan kuvasuhteen */
-  z-index: -1; /* Vie kuvat tekstin alle, jotta ne eivät peitä sisältöä */
-  opacity: 0.7; /* Voit säätää läpinäkyvyyttä, jos haluat niiden olevan taustamaisempia */
-}
-
-.side-image.left {
-  left: 20px; /* Kuvan etäisyys vasemmasta reunasta */
-}
-
-.side-image.right {
-  right: 20px; /* Kuvan etäisyys oikeasta reunasta */
-}
-
-/* Voit lisätä media queryjä, jos haluat kuvien piiloutuvan tai muuttavan kokoaan pienemmillä näytöillä */
-@media (max-width: 1200px) {
-  .side-image {
-    max-width: 180px; /* Pienemmät kuvat pienemmillä näytöillä */
+/* 📱 Mobiilimuutokset */
+@media (max-width: 600px) {
+  .accordion {
+    font-size: 1.1em;
+    padding: 1em;
   }
-}
 
-@media (max-width: 900px) {
-  .side-image {
-    display: none; /* Piilota kuvat kokonaan hyvin pienillä näytöillä */
+  .panel {
+    font-size: 0.9em; /* pienempi tekstikoko mobiilissa */
+    line-height: 1.4em;
+    padding: 0.8em;
+  }
+
+  .centered {
+    width: 95%;
+    max-width: none;
+  }
+
+  .carousel {
+    height: 220px; /* matalampi */
+  }
+
+  .slides img {
+    height: 220px;
+  }
+
+  h1 {
+    font-size: 1.4em;
+  }
+
+  h2 {
+    font-size: 1.1em;
+  }
+
+  body {
+    font-size: 14px;
   }
 }
