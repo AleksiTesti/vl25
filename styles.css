@@ -155,7 +155,7 @@ h1 {
 /* YouTube video container */
 .video-container {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9-kuvasuhde */
+  padding-bottom: 40%; /* 16:9-kuvasuhde */
   height: 0;
   overflow: hidden;
   max-width: 75%; /* rajoitetaan max leveys */
