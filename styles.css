@@ -203,6 +203,36 @@ h1 {
     width: 90%;
   }
 }
+.top-header {
+  background-color: #3f51b5;
+  color: white;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.top-header h1 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.card-button {
+  position: absolute;
+  left: 1em;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  padding: 0.5em 0.9em;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+.card-button:hover {
+  background: rgba(255,255,255,0.25);
+}
 
 
 
