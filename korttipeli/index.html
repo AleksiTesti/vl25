@@ -3,27 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Korttipeli</title>
+  <link rel="stylesheet" href="/styles.css">
 
-  <!-- YHTEINEN CSS -->
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- Korttipelin omat pienet lisätyylit -->
   <style>
     .card-game {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2em 1em;
-      text-align: center;
-    }
-
-    .card-area {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      min-height: 420px;
+      margin-top: 2em;
     }
 
-    .card-area img {
+    .card-game img {
       width: 85%;
       max-width: 320px;
       border-radius: 12px;
@@ -31,39 +21,38 @@
       cursor: pointer;
     }
 
-    .end-text {
-      font-size: 1.4em;
+    .deck-finished {
+      font-size: 1.2em;
+      margin: 2em;
       font-weight: bold;
-      margin-bottom: 1em;
     }
 
-    .card-buttons {
-      margin-top: 1.5em;
-      display: flex;
-      justify-content: center;
-      gap: 1em;
-      flex-wrap: wrap;
+    @media (max-width: 600px) {
+      .card-game img {
+        width: 95%;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<!-- 🔵 SININEN YLÄPALKKI (SAMA KUIN MUUALLA) -->
-<header>
+<!-- 🔵 SININEN YLÄPALKKI -->
+<header class="top-header">
+  <a href="/" class="card-button">← Etusivulle</a>
   <h1>Korttipeli</h1>
 </header>
 
 <main class="card-game">
 
-  <!-- Kortin alue -->
-  <div class="card-area">
-    <img id="cardImage" src="cards/ETUKANSI.png" alt="Kortti" onclick="nextCard()">
-  </div>
+  <!-- Korttikuva -->
+  <img id="cardImage" src="cards/ETUKANSI.png" alt="Kortti" onclick="nextCard()">
 
-  <!-- Napit -->
-  <div class="card-buttons">
-    <button class="button" onclick="resetDeck()">Sekoita & aloita alusta</button>
+  <!-- Teksti kun pakka loppu -->
+  <div id="deckFinished" class="deck-finished" style="display:none;">
+    Pakka on pelattu 🎉  
+    <br><br>
+    <button class="button" onclick="resetDeck()">Sekoita uudelleen</button>
   </div>
 
 </main>
@@ -77,63 +66,7 @@
     "cards/kortti-03.png",
     "cards/kortti-04.png",
     "cards/kortti-05.png",
-    "cards/kortti-06.png",
-    "cards/kortti-07.png",
-    "cards/kortti-08.png",
-    "cards/kortti-09.png",
-    "cards/kortti-10.png",
-    "cards/kortti-11.png",
-    "cards/kortti-12.png",
-    "cards/kortti-13.png",
-    "cards/kortti-14.png",
-    "cards/kortti-15.png",
-    "cards/kortti-16.png",
-    "cards/kortti-17.png",
-    "cards/kortti-18.png",
-    "cards/kortti-19.png",
-    "cards/kortti-20.png",
-    "cards/kortti-21.png",
-    "cards/kortti-22.png",
-    "cards/kortti-23.png",
-    "cards/kortti-24.png",
-    "cards/kortti-25.png",
-    "cards/kortti-26.png",
-    "cards/kortti-27.png",
-    "cards/kortti-28.png",
-    "cards/kortti-29.png",
-    "cards/kortti-30.png",
-    "cards/kortti-31.png",
-    "cards/kortti-32.png",
-    "cards/kortti-33.png",
-    "cards/kortti-34.png",
-    "cards/kortti-35.png",
-    "cards/kortti-36.png",
-    "cards/kortti-37.png",
-    "cards/kortti-38.png",
-    "cards/kortti-39.png",
-    "cards/kortti-40.png",
-    "cards/kortti-41.png",
-    "cards/kortti-42.png",
-    "cards/kortti-43.png",
-    "cards/kortti-44.png",
-    "cards/kortti-45.png",
-    "cards/kortti-46.png",
-    "cards/kortti-47.png",
-    "cards/kortti-48.png",
-    "cards/kortti-49.png",
-    "cards/kortti-50.png",
-    "cards/kortti-51.png",
-    "cards/kortti-52.png",
-    "cards/kortti-53.png",
-    "cards/kortti-54.png",
-    "cards/kortti-55.png",
-    "cards/kortti-56.png",
-    "cards/kortti-57.png",
-    "cards/kortti-58.png",
-    "cards/kortti-59.png",
-    "cards/kortti-60.png",
-    "cards/kortti-61.png",
-    "cards/kortti-62.png"
+    // ... jatka listaa
   ];
 
   let deck = [];
@@ -147,26 +80,22 @@
     deck = shuffle([...cards]);
     index = -1;
     document.getElementById("cardImage").src = frontCard;
+    document.getElementById("cardImage").style.display = "block";
+    document.getElementById("deckFinished").style.display = "none";
   }
 
   function nextCard() {
     index++;
-    const img = document.getElementById("cardImage");
-
     if (index < deck.length) {
-      img.src = deck[index];
+      document.getElementById("cardImage").src = deck[index];
     } else {
-      img.outerHTML = `
-        <div class="end-text">
-          Pakka on pelattu 🎉<br><br>
-          <button class="button" onclick="resetDeck()">Sekoita uudelleen</button>
-        </div>
-      `;
+      document.getElementById("cardImage").style.display = "none";
+      document.getElementById("deckFinished").style.display = "block";
     }
   }
 
   function resetDeck() {
-    location.reload();
+    startGame();
   }
 
   startGame();
