@@ -1,0 +1,124 @@
+/* ========================= */
+/* CASINO-TYYLINEN TAUSTA */
+/* ========================= */
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  background: radial-gradient(circle at top, #1b5e20, #0b2e13);
+  color: #f5f5f5;
+  text-align: center;
+  min-height: 100vh;
+}
+
+/* ========================= */
+/* YLÄPALKKI */
+/* ========================= */
+
+.top-header {
+  background: linear-gradient(90deg, #2e7d32, #1b5e20);
+  color: white;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.top-header h1 {
+  margin: 0;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+}
+
+/* Takaisin-nappi */
+.card-button {
+  position: absolute;
+  left: 1em;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  padding: 0.5em 0.9em;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.card-button:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* ========================= */
+/* PELIALUE */
+/* ========================= */
+
+.card-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2em;
+}
+
+/* Kortti */
+.card-image {
+  max-width: 260px;
+  max-height: 380px;
+  border-radius: 14px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.6);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.card-image:active {
+  transform: scale(0.96);
+}
+
+/* ========================= */
+/* LOPPUNÄKYMÄ */
+/* ========================= */
+
+.end-screen {
+  display: none;
+  margin-top: 2em;
+}
+
+.end-screen h2 {
+  margin-bottom: 1em;
+  font-size: 1.6em;
+}
+
+/* ========================= */
+/* NAPPI */
+/* ========================= */
+
+.button {
+  padding: 0.8em 1.6em;
+  background: linear-gradient(#ffd54f, #ffb300);
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.button:hover {
+  background: linear-gradient(#ffeb3b, #f9a825);
+}
+
+/* ========================= */
+/* MOBIILI */
+/* ========================= */
+
+@media (max-width: 600px) {
+  .card-image {
+    max-width: 220px;
+    max-height: 320px;
+  }
+
+  .top-header h1 {
+    font-size: 1.3em;
+  }
+}
