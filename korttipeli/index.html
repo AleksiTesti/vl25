@@ -31,71 +31,11 @@
 
 <script>
   const frontCard = "cards/ETUKANSI.png";
+  const totalCards = 62;
 
-  const cards = [
-    "cards/kortti-01.png",
-    "cards/kortti-02.png",
-    "cards/kortti-03.png",
-    "cards/kortti-04.png",
-    "cards/kortti-05.png",
-    "cards/kortti-06.png",
-    "cards/kortti-07.png",
-    "cards/kortti-08.png",
-    "cards/kortti-09.png",
-    "cards/kortti-10.png",
-    "cards/kortti-11.png",
-    "cards/kortti-12.png",
-    "cards/kortti-13.png",
-    "cards/kortti-14.png",
-    "cards/kortti-15.png",
-    "cards/kortti-16.png",
-    "cards/kortti-17.png",
-    "cards/kortti-18.png",
-    "cards/kortti-19.png",
-    "cards/kortti-20.png",
-    "cards/kortti-21.png",
-    "cards/kortti-22.png",
-    "cards/kortti-23.png",
-    "cards/kortti-24.png",
-    "cards/kortti-25.png",
-    "cards/kortti-26.png",
-    "cards/kortti-27.png",
-    "cards/kortti-28.png",
-    "cards/kortti-29.png",
-    "cards/kortti-30.png",
-    "cards/kortti-31.png",
-    "cards/kortti-32.png",
-    "cards/kortti-33.png",
-    "cards/kortti-34.png",
-    "cards/kortti-35.png",
-    "cards/kortti-36.png",
-    "cards/kortti-37.png",
-    "cards/kortti-38.png",
-    "cards/kortti-39.png",
-    "cards/kortti-40.png",
-    "cards/kortti-41.png",
-    "cards/kortti-42.png",
-    "cards/kortti-43.png",
-    "cards/kortti-44.png",
-    "cards/kortti-45.png",
-    "cards/kortti-46.png",
-    "cards/kortti-47.png",
-    "cards/kortti-48.png",
-    "cards/kortti-49.png",
-    "cards/kortti-50.png",
-    "cards/kortti-51.png",
-    "cards/kortti-52.png",
-    "cards/kortti-53.png",
-    "cards/kortti-54.png",
-    "cards/kortti-55.png",
-    "cards/kortti-56.png",
-    "cards/kortti-57.png",
-    "cards/kortti-58.png",
-    "cards/kortti-59.png",
-    "cards/kortti-60.png",
-    "cards/kortti-61.png",
-    "cards/kortti-62.png"
-  ];
+  const cards = Array.from({ length: totalCards }, (_, i) =>
+    `cards/kortti-${String(i + 1).padStart(2, "0")}.png`
+  );
 
   let deck = [];
   let index = -1;
